@@ -4,6 +4,9 @@ import * as React from "react";
 import "@/styles/globals.css";
 
 import { siteConfig } from "@/constant/config";
+import { Providers } from "@/app/providers";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -51,7 +54,13 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body className="dark:bg-black ">
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
+      </body>
     </html>
   );
 }

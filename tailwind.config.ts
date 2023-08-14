@@ -3,12 +3,18 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
-      fontFamily: {
-        primary: ["Quicksand"],
-      },
       colors: {
+        current: "currentColor",
+        transparent: "transparent",
+        white: "#FFFFFF",
+        black: "#090E34",
+        dark: "#1D2144",
+        yellow: "#FBB040",
+        brandsbg: "#D1D5DB ",
+        "body-color": "#959CB1",
         primary: {
           // Customize it on globals.css :root
           50: "rgb(var(--tw-color-primary-50) / <alpha-value>)",
@@ -23,7 +29,25 @@ export default {
           900: "rgb(var(--tw-color-primary-900) / <alpha-value>)",
           950: "rgb(var(--tw-color-primary-950) / <alpha-value>)",
         },
-        dark: "#222222",
+      },
+      screens: {
+        xs: "450px",
+        // => @media (min-width: 450px) { ... }
+
+        sm: "575px",
+        // => @media (min-width: 576px) { ... }
+
+        md: "768px",
+        // => @media (min-width: 768px) { ... }
+
+        lg: "992px",
+        // => @media (min-width: 992px) { ... }
+
+        xl: "1200px",
+        // => @media (min-width: 1200px) { ... }
+
+        "2xl": "1400px",
+        // => @media (min-width: 1400px) { ... }
       },
       keyframes: {
         flicker: {
