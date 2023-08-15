@@ -53,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html suppressHydrationWarning lang="en">
       <body className="dark:bg-black ">
         <Providers>
           <Header />

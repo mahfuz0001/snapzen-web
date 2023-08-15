@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollUp from "@/components/Common/ScrollUp";
 import Head from "next/head";
 import * as React from "react";
 
@@ -10,9 +11,7 @@ export default function HomePage() {
         <title>SnapZen - Your Path to Positivity</title>
       </Head>
       <section className="">
-        <div className="layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center">
-          hi
-        </div>
+        <ScrollUp />
       </section>
     </main>
   );

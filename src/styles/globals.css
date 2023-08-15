@@ -77,6 +77,14 @@
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];
   }
+
+  .sticky .header-logo {
+    @apply py-5 lg:py-2;
+  }
+
+  .sticky .menu-scroll.active {
+    @apply opacity-70;
+  }
 }
 
 @layer utilities {
@@ -101,5 +109,18 @@
   .animated-underline:hover,
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
+  }
+}
+@layer components {
+  input[type="checkbox"]:checked ~ label span svg {
+    @apply inline-flex;
+  }
+
+  input#togglePlan:checked ~ .dot {
+    @apply translate-x-full;
+  }
+
+  input#checkboxLabel:checked ~ .box span {
+    @apply opacity-100;
   }
 }
