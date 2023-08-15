@@ -1,9 +1,8 @@
 "use client";
 
-import ScrollUp from "@/components/Common/ScrollUp";
+import Brands from "@/components/Brands";
 import Hero from "@/components/Hero";
 import { Metadata } from "next";
-import Head from "next/head";
 import * as React from "react";
 
 export const metadata: Metadata = {
@@ -14,6 +13,7 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <Brands />
     </main>
   );
 }

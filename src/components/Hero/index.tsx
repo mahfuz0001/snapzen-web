@@ -18,19 +18,20 @@ const Hero = () => {
           <div className="xl:gap-32.5 flex lg:items-center lg:gap-8">
             <div className=" md:w-1/2">
               <h4 className="mb-4.5 text-lg font-medium text-black dark:text-white">
-                SnapZen - A Complete SaaS Web Template
+                🤩 Unleash Your Potential with SnapZen
               </h4>
               <h1 className="xl:text-hero mb-5 pr-16 text-3xl font-bold text-black dark:text-white ">
-                Free Next.js Template for
+                Your Ultimate
                 <span className="before:bg-titlebg dark:before:bg-titlebgdark before:-z-1 relative ml-2.5 inline-block before:absolute before:bottom-2.5 before:left-0 before:h-3 before:w-full ">
-                  SaaS
+                  AI-Powered
                 </span>
+                Personal Growth Companion.
               </h1>
               <p>
-                Solid Pro - Packed with all the key integrations you need for
-                swift SaaS startup launch, including - Auth, Database, Sanity
-                Blog, Essential Components, Pages and More. Built-winth -
-                Next.js 13, React 18 and TypeScript.
+                Embark on a Phenomenal Journey of Self-Discovery and Empowerment
+                with SnapZen: The Ultimate AI-Powered Catalyst for Unleashing
+                Your Full Potential and Nurturing Personal Growth Beyond
+                Boundaries!
               </p>
 
               <div className="mt-10">
