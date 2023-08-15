@@ -7,6 +7,9 @@ import { siteConfig } from "@/constant/config";
 import { Providers } from "@/app/providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import Lines from "@/components/Lines";
+import ToasterContext from "@/context/ToastContext";
 
 export const metadata: Metadata = {
   title: {
@@ -56,9 +59,12 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body className="dark:bg-black ">
         <Providers>
+          <Lines />
           <Header />
+          <ToasterContext />
           {children}
           <Footer />
+          <ScrollToTop />
         </Providers>
       </body>
     </html>

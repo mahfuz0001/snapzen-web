@@ -1,179 +1,179 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { SetStateAction, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
 const Header = () => {
-  // Navbar toggle
-  const [navbarOpen, setNavbarOpen] = useState(false);
-  const navbarToggleHandler = () => {
-    setNavbarOpen(!navbarOpen);
-  };
+  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [dropdownToggler, setDropdownToggler] = useState(false);
+  const [stickyMenu, setStickyMenu] = useState(false);
 
-  // Sticky Navbar
-  const [sticky, setSticky] = useState(false);
-  const handleStickyNavbar = () => {
+  const pathUrl = usePathname();
+
+  // Sticky menu
+  const handleStickyMenu = () => {
     if (window.scrollY >= 80) {
-      setSticky(true);
+      setStickyMenu(true);
     } else {
-      setSticky(false);
+      setStickyMenu(false);
     }
   };
+
   useEffect(() => {
-    window.addEventListener("scroll", handleStickyNavbar);
+    window.addEventListener("scroll", handleStickyMenu);
   });
 
-  // submenu handler
-  const [openIndex, setOpenIndex] = useState(-1);
-  const handleSubmenu = (index: SetStateAction<number>) => {
-    if (openIndex === index) {
-      setOpenIndex(-1);
-    } else {
-      setOpenIndex(index);
-    }
-  };
-
   return (
-    <>
-      <header
-        className={`header left-0 top-0 z-40 flex w-full items-center bg-transparent ${
-          sticky
-            ? "shadow-sticky dark:!bg-primary !fixed !z-[9999] !bg-white !bg-opacity-80 backdrop-blur-sm !transition dark:!bg-opacity-20"
-            : "absolute"
-        }`}
-      >
-        <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
-              <Link
-                href="/"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
-              >
-                <Image
-                  src="/images/logo/logo-2.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full dark:hidden"
-                />
-                <Image
-                  src="/images/logo/logo.svg"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
-                />
-              </Link>
-            </div>
-            <div className="flex w-full items-center justify-between px-4">
-              <div>
-                <button
-                  onClick={navbarToggleHandler}
-                  id="navbarToggler"
-                  aria-label="Mobile Menu"
-                  className="ring-primary absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
-                >
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[7px] rotate-45" : " "
-                    }`}
-                  />
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "opacity-0 " : " "
-                    }`}
-                  />
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[-8px] -rotate-45" : " "
-                    }`}
-                  />
-                </button>
-                <nav
-                  id="navbarCollapse"
-                  className={`navbar border-body-color/50 dark:border-body-color/20 dark:bg-dark absolute right-0 z-30 w-[250px] rounded border-[.5px] bg-white px-6 py-4 duration-300 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
-                    navbarOpen
-                      ? "visibility top-full opacity-100"
-                      : "invisible top-[120%] opacity-0"
+    <header
+      className={`z-99999 fixed left-0 top-0 w-full py-7 ${
+        stickyMenu
+          ? "bg-white !py-4 shadow transition duration-100 dark:bg-black"
+          : ""
+      }`}
+    >
+      <div className="max-w-c-1390 relative mx-auto items-center justify-between px-4 md:px-8 lg:flex 2xl:px-0">
+        <div className="flex w-full items-center justify-between lg:w-1/4">
+          <a href="/">
+            <Image
+              src="/images/logo/logo-dark.svg"
+              alt="logo"
+              width={119.03}
+              height={30}
+              className="hidden w-full dark:block"
+            />
+            <Image
+              src="/images/logo/logo-light.svg"
+              alt="logo"
+              width={119.03}
+              height={30}
+              className="w-full dark:hidden"
+            />
+          </a>
+
+          {/* <!-- Hamburger Toggle BTN --> */}
+          <button
+            aria-label="hamburger Toggler"
+            className="block lg:hidden"
+            onClick={() => setNavigationOpen(!navigationOpen)}
+          >
+            <span className="w-5.5 h-5.5 relative block cursor-pointer">
+              <span className="absolute block h-full w-full">
+                <span
+                  className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-[0] duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "!w-full delay-300" : ""
                   }`}
-                >
-                  <ul className="block lg:flex lg:space-x-12">
-                    {menuData.map((menuItem, index) => (
-                      <li key={menuItem.id} className="group relative">
-                        {menuItem.path ? (
-                          <Link
-                            href={menuItem.path}
-                            className={`text-dark flex py-2 text-base group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6`}
+                ></span>
+                <span
+                  className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "delay-400 !w-full" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`relative left-0 top-0 my-1 block h-0.5 w-0 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
+                    !navigationOpen ? "!w-full delay-500" : ""
+                  }`}
+                ></span>
+              </span>
+              <span className="absolute block h-full w-full rotate-45">
+                <span
+                  className={`absolute left-2.5 top-0 block h-0 w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
+                    navigationOpen ? "h-full delay-[0]" : ""
+                  }`}
+                ></span>
+                <span
+                  className={`delay-400 absolute left-0 top-[.03rem] block h-0 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
+                    navigationOpen ? "dealy-200 h-0.5" : ""
+                  }`}
+                ></span>
+              </span>
+            </span>
+          </button>
+          {/* <!-- Hamburger Toggle BTN --> */}
+        </div>
+
+        {/* Nav Menu Start   */}
+        <div
+          className={`invisible h-0 w-full items-center justify-between lg:visible lg:flex lg:h-auto lg:w-full ${
+            navigationOpen &&
+            "dark:bg-blacksection shadow-solid-5 p-7.5 !visible mt-4 h-auto max-h-[400px] overflow-y-scroll rounded-md bg-white"
+          }`}
+        >
+          <nav>
+            <ul className="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-10">
+              {menuData.map((menuItem, key) => (
+                <li key={key} className={menuItem.submenu && "group relative"}>
+                  {menuItem.submenu ? (
+                    <>
+                      <a
+                        onClick={() => setDropdownToggler(!dropdownToggler)}
+                        className="hover:text-primary flex cursor-pointer items-center justify-between gap-3"
+                      >
+                        {menuItem.title}
+                        <span>
+                          <svg
+                            className="fill-waterloo group-hover:fill-primary h-3 w-3 cursor-pointer"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
                           >
-                            {menuItem.title}
-                          </Link>
-                        ) : (
-                          <>
-                            <a
-                              onClick={() => handleSubmenu(index)}
-                              className="text-dark flex cursor-pointer items-center justify-between py-2 text-base group-hover:opacity-70 dark:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
-                            >
-                              {menuItem.title}
-                              <span className="pl-3">
-                                <svg width="15" height="14" viewBox="0 0 15 14">
-                                  <path
-                                    d="M7.81602 9.97495C7.68477 9.97495 7.57539 9.9312 7.46602 9.8437L2.43477 4.89995C2.23789 4.70308 2.23789 4.39683 2.43477 4.19995C2.63164 4.00308 2.93789 4.00308 3.13477 4.19995L7.81602 8.77183L12.4973 4.1562C12.6941 3.95933 13.0004 3.95933 13.1973 4.1562C13.3941 4.35308 13.3941 4.65933 13.1973 4.8562L8.16601 9.79995C8.05664 9.90933 7.94727 9.97495 7.81602 9.97495Z"
-                                    fill="currentColor"
-                                  />
-                                </svg>
-                              </span>
-                            </a>
-                            <div
-                              className={`submenu dark:bg-dark relative left-0 top-full rounded-md bg-white transition-[top] duration-300 group-hover:opacity-100 lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
-                                openIndex === index ? "block" : "hidden"
-                              }`}
-                            >
-                              {menuItem.submenu &&
-                                menuItem.submenu.map((submenuItem) => (
-                                  <Link
-                                    href={submenuItem.path}
-                                    key={submenuItem.id}
-                                    className="text-dark block rounded py-2.5 text-sm hover:opacity-70 dark:text-white lg:px-3"
-                                  >
-                                    {submenuItem.title}
-                                  </Link>
-                                ))}
-                            </div>
-                          </>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <Link
-                  href="/signin"
-                  className="text-dark hidden px-7 py-3 text-base hover:opacity-70 dark:text-white md:block"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up hover:shadow-signUp hidden bg-blue-950 px-8 py-3 text-base text-white transition duration-300 hover:bg-opacity-90 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
-                <div>
-                  <ThemeToggler />
-                </div>
-              </div>
-            </div>
+                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+                          </svg>
+                        </span>
+                      </a>
+
+                      <ul
+                        className={`dropdown ${dropdownToggler ? "flex" : ""}`}
+                      >
+                        {menuItem.submenu.map((item, key) => (
+                          <li key={key} className="hover:text-primary">
+                            <Link href={item.path || "#"}>{item.title}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <Link
+                      href={`${menuItem.path}`}
+                      className={
+                        pathUrl === menuItem.path
+                          ? "hover:text-primary text-primary"
+                          : "hover:text-primary"
+                      }
+                    >
+                      {menuItem.title}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="mt-7 flex items-center gap-6 lg:mt-0">
+            <ThemeToggler />
+
+            <Link
+              href="https://github.com/NextJSTemplates/solid-nextjs"
+              className="text-waterloo text-regular hover:text-primary font-medium"
+            >
+              Sign In
+            </Link>
+
+            <Link
+              href="https://nextjstemplates.com/templates/solid"
+              className="bg-primary hover:bg-primaryho text-regular px-7.5 flex items-center justify-center rounded-full py-2.5 text-white duration-300 ease-in-out"
+            >
+              Sign Up
+            </Link>
           </div>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };
+
+// w-full delay-300
 
 export default Header;
