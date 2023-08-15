@@ -23,14 +23,14 @@ const Feature = () => {
           />
           {/* <!-- Section Title End --> */}
 
-          <div className="gap-7.5 xl:gap-12.5 mt-12.5 lg:mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:mt-20">
-            {/* <!-- Features item Start --> */}
+          {/* <div className="gap-7.5 xl:gap-12.5 mt-12.5 lg:mt-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:mt-20"> */}
+          {/* <!-- Features item Start --> */}
 
-            {featuresData.map((feature, key) => (
+          {/* {featuresData.map((feature, key) => (
               <SingleFeature feature={feature} key={key} />
-            ))}
-            {/* <!-- Features item End --> */}
-          </div>
+            ))} */}
+          {/* <!-- Features item End --> */}
+          {/* </div> */}
         </div>
       </section>
 

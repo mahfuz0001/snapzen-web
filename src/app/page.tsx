@@ -1,8 +1,16 @@
 "use client";
 
+import About from "@/components/About";
 import Brands from "@/components/Brands";
+import CTA from "@/components/CTA";
+import Contact from "@/components/Contact";
+import FAQ from "@/components/FAQ";
 import Feature from "@/components/Features";
+import FeaturesTab from "@/components/FeaturesTab";
+import FunFact from "@/components/FunFact";
 import Hero from "@/components/Hero";
+import Integration from "@/components/Integration";
+import Testimonial from "@/components/Testimonial";
 import { Metadata } from "next";
 import * as React from "react";
 
@@ -16,6 +24,14 @@ export default function HomePage() {
       <Hero />
       <Brands />
       <Feature />
+      <About />
+      <FeaturesTab />
+      <FunFact />
+      <Integration />
+      <CTA />
+      {/* <FAQ /> */}
+      {/* <Testimonial /> */}
+      <Contact />
     </main>
   );
 }
