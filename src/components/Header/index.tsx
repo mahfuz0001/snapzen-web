@@ -155,14 +155,14 @@ const Header = () => {
             <ThemeToggler />
 
             <Link
-              href="https://github.com/NextJSTemplates/solid-nextjs"
+              href="https://github.com/NextJSTemplates/snapzen-nextjs"
               className="text-waterloo text-regular hover:text-primary font-medium"
             >
               Sign In
             </Link>
 
             <Link
-              href="https://nextjstemplates.com/templates/solid"
+              href="https://nextjstemplates.com/templates/snapzen"
               className="bg-primary hover:bg-primaryho text-regular px-7.5 flex items-center justify-center rounded-full py-2.5 text-white duration-300 ease-in-out"
             >
               Sign Up

@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import Lines from "@/components/Lines";
 import ToasterContext from "@/context/ToastContext";
+import { SessionProvider, useSession } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: {
@@ -55,17 +56,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { data: session } = useSession(); // Get the session using useSession
+
   return (
     <html suppressHydrationWarning lang="en">
       <body className="dark:bg-black ">
-        <Providers>
-          <Lines />
-          <Header />
-          <ToasterContext />
-          {children}
-          <Footer />
-          <ScrollToTop />
-        </Providers>
+        <SessionProvider session={session}>
+          <Providers>
+            <Lines />
+            <Header />
+            <ToasterContext />
+            {children}
+            <Footer />
+            <ScrollToTop />
+          </Providers>
+        </SessionProvider>
       </body>
     </html>
   );

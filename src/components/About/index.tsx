@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import SectionHeader from "@/components/Common/SectionHeader";
 
 const About = () => {
   return (
@@ -65,13 +64,14 @@ const About = () => {
                 <span className="bg-meta text-metatitle px-4.5 mb-4 mr-4 inline-flex rounded-full py-1 uppercase text-white ">
                   New
                 </span>{" "}
-                SaaS Boilerplate for Next.js
+                Discord bot to easily
               </h4>
               <h2 className="xl:text-hero relative mb-6 text-3xl font-bold text-black dark:text-white">
-                A Complete Solution for
+                Personalize{" "}
                 <span className="before:bg-titlebg dark:before:bg-titlebgdark before:-z-1 relative inline-block before:absolute before:bottom-2.5 before:left-0 before:h-3 before:w-full">
-                  SaaS Startup
-                </span>
+                  Growth
+                </span>{" "}
+                Paths
               </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
@@ -133,12 +133,12 @@ const About = () => {
               className="animate_left md:w-1/2"
             >
               <h4 className="font-medium uppercase text-black dark:text-white">
-                Launch Your SaaS Fast
+                Dashboard to see
               </h4>
               <h2 className="xl:text-hero relative mb-6 text-3xl font-bold text-black dark:text-white">
-                Packed with All Essential
+                Mindful Insights and
                 <span className="before:bg-titlebg2 dark:before:bg-titlebgdark before:-z-1 relative ml-2.5 inline-block before:absolute before:bottom-2.5 before:left-0 before:h-3 before:w-full">
-                  Integrations
+                  Reflections
                 </span>
               </h2>
               <p>

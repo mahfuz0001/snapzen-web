@@ -3,7 +3,9 @@ import React from "react";
 import SectionHeader from "../Common/SectionHeader";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper";
+import Autoplay from "swiper";
+import Pagination from "swiper";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";

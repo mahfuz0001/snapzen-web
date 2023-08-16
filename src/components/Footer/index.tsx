@@ -57,7 +57,7 @@ const Footer = () => {
                   href="#"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
-                  hello@solid.com
+                  hello@snapzen.com
                 </a>
               </motion.div>
 
@@ -301,7 +301,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="animate_top"
             >
-              <p>&copy; 2025 Solid. All rights reserved</p>
+              <p>&copy; 2025 SnapZen. All rights reserved</p>
             </motion.div>
 
             <motion.div
